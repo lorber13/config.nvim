@@ -4,6 +4,19 @@ return {
     { "j-hui/fidget.nvim", config = true },
   },
   config = function()
+    -- Diagnostic Config
+    -- See :help vim.diagnostic.Opts
+    vim.diagnostic.config({
+      severity_sort = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "󰅚 ",
+          [vim.diagnostic.severity.WARN] = "󰀪 ",
+          [vim.diagnostic.severity.INFO] = "󰋽 ",
+          [vim.diagnostic.severity.HINT] = "󰌶 ",
+        },
+      },
+    })
     local lsp_group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
     vim.api.nvim_create_autocmd("LspAttach", {
       group = lsp_group,
