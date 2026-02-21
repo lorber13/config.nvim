@@ -25,6 +25,16 @@ return {
         if client and client:supports_method("textDocument/inlayHint", event.buf) then
           vim.lsp.inlay_hint.enable()
         end
+        local map = function(keys, func, desc, mode)
+          mode = mode or "n"
+          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+        end
+        map("gd", vim.lsp.buf.definition, "Goto definitions")
+        map("gi", vim.lsp.buf.implementation, "Goto implementations")
+        map("grn", vim.lsp.buf.rename, "Rename symbol")
+        map("gD", vim.lsp.buf.declaration, "Goto declaration")
+        map("grr", vim.lsp.buf.references, "Goto references")
+        map("gra", vim.lsp.buf.code_action, "Code actions")
       end,
     })
     vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
