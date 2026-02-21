@@ -14,6 +14,15 @@ return {
         quit_on_open = true,
       },
     },
+    view = {
+      width = {},
+    },
+    update_focused_file = {
+      enable = true,
+    },
+    renderer = {
+      group_empty = true,
+    },
   },
   keys = {
     {
