@@ -35,6 +35,7 @@ return {
         map("gD", vim.lsp.buf.declaration, "Goto declaration")
         map("grr", vim.lsp.buf.references, "Goto references")
         map("gra", vim.lsp.buf.code_action, "Code actions")
+        map("<leader>d", vim.diagnostic.setloclist, "Diagnostics")
       end,
     })
     vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
