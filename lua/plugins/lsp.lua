@@ -2,6 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     { "j-hui/fidget.nvim", config = true },
+    { "mfussenegger/nvim-jdtls" },
   },
   config = function()
     -- Diagnostic Config
@@ -47,5 +48,6 @@ return {
     vim.lsp.enable("rust_analyzer")
     vim.lsp.enable("lua_ls")
     vim.lsp.enable("ts_ls")
+    vim.lsp.enable("jdtls")
   end,
 }
