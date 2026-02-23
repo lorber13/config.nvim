@@ -48,6 +48,31 @@ return {
     vim.lsp.enable("rust_analyzer")
     vim.lsp.enable("lua_ls")
     vim.lsp.enable("ts_ls")
+
+    local jdtls_package_dir = vim.fn.expand("$MASON/packages/jdtls/")
+    local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+    local jdtls_workspaces_dir = vim.fn.expand("$HOME/.jdtls_workspaces/")
+    vim.lsp.config("jdtls", {
+      cmd = {
+        "java",
+        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+        "-Dosgi.bundles.defaultStartLevel=4",
+        "-Declipse.product=org.eclipse.jdt.ls.core.product",
+        "-Dlog.level=ALL",
+        "-Xmx1G",
+        "--add-modules=ALL-SYSTEM",
+        "--add-opens",
+        "java.base/java.util=ALL-UNNAMED",
+        "--add-opens",
+        "java.base/java.lang=ALL-UNNAMED",
+        "-jar",
+        vim.fn.glob(jdtls_package_dir .. "plugins/org.eclipse.equinox.launcher_*.jar"),
+        "-configuration",
+        jdtls_package_dir .. "config_linux",
+        "-data",
+        jdtls_workspaces_dir .. project_name,
+      },
+    })
     vim.lsp.enable("jdtls")
   end,
 }
