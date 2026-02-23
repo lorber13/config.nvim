@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     { "j-hui/fidget.nvim", config = true },
-    { "mfussenegger/nvim-jdtls" },
+    { "https://codeberg.org/mfussenegger/nvim-jdtls" },
   },
   config = function()
     -- Diagnostic Config
