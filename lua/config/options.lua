@@ -1,34 +1,48 @@
-vim.opt.number = true
-vim.opt.cursorline = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.cursorline = true
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
-vim.opt.undofile = true
+vim.o.undofile = true
 
--- Sync clipboard between OS and Neovim.
--- Schedule the setting after `UiEnter` because it can increase startup-time.
-vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
-end)
+-- Sync clipboard between OS and Neovim. Schedule the setting after `UiEnter` because it can
+-- increase startup-time. Remove this option if you want your OS clipboard to remain independent.
+-- See `:help 'clipboard'`
+vim.api.nvim_create_autocmd("UIEnter", {
+  callback = function()
+    vim.o.clipboard = "unnamedplus"
+  end,
+})
 
-vim.opt.showmode = false
+vim.o.showmode = false
 
-vim.opt.signcolumn = "yes"
+vim.o.signcolumn = "yes"
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
-vim.opt.breakindent = true
-vim.opt.wrap = false
+vim.o.breakindent = true
+vim.o.wrap = false
+
+-- Show <tab> and trailing spaces
+vim.o.list = true
+
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
+vim.o.confirm = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 5
-vim.opt.sidescrolloff = 10
+vim.o.scrolloff = 5
+vim.o.sidescrolloff = 10
+
+-- Use <Esc> to exit terminal mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
