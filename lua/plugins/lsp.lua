@@ -2,7 +2,10 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     { "j-hui/fidget.nvim", config = true },
-    { "https://codeberg.org/mfussenegger/nvim-jdtls" },
+    {
+      "https://codeberg.org/mfussenegger/nvim-jdtls",
+      dependencies = { "mason-org/mason.nvim" },
+    },
   },
   config = function()
     -- Diagnostic Config
@@ -65,6 +68,7 @@ return {
         "java.base/java.util=ALL-UNNAMED",
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
+        "-javaagent:" .. jdtls_package_dir .. "lombok.jar",
         "-jar",
         vim.fn.glob(jdtls_package_dir .. "plugins/org.eclipse.equinox.launcher_*.jar"),
         "-configuration",
