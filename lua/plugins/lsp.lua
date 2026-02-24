@@ -33,13 +33,23 @@ return {
           mode = mode or "n"
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
-        map("gd", vim.lsp.buf.definition, "Goto definitions")
-        map("gi", vim.lsp.buf.implementation, "Goto implementations")
+        map("gd", function()
+          Snacks.picker.lsp_definitions()
+        end, "Goto definitions")
+        map("gi", function()
+          Snacks.picker.lsp_implementations()
+        end, "Goto implementations")
         map("grn", vim.lsp.buf.rename, "Rename symbol")
-        map("gD", vim.lsp.buf.declaration, "Goto declaration")
-        map("grr", vim.lsp.buf.references, "Goto references")
+        map("gD", function()
+          Snacks.picker.lsp_declarations()
+        end, "Goto declaration")
+        map("grr", function()
+          Snacks.picker.lsp_references()
+        end, "Goto references")
         map("gra", vim.lsp.buf.code_action, "Code actions")
-        map("<leader>d", vim.diagnostic.setloclist, "Diagnostics")
+        map("<leader>d", function()
+          Snacks.picker.diagnostics()
+        end, "Diagnostics")
       end,
     })
     vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
