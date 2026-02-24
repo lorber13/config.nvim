@@ -9,10 +9,10 @@ return {
     -- "esmuellert/codediff.nvim",      -- optional
 
     -- Only one of these is needed.
-    "nvim-telescope/telescope.nvim", -- optional
+    -- "nvim-telescope/telescope.nvim", -- optional
     -- "ibhagwan/fzf-lua",              -- optional
     -- "nvim-mini/mini.pick",           -- optional
-    -- "folke/snacks.nvim",             -- optional
+    "folke/snacks.nvim", -- optional
   },
   cmd = "Neogit",
   keys = {
