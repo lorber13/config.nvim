@@ -19,14 +19,14 @@ return {
       desc = "Find files",
     },
     {
-      "<leader><leader>",
+      "<leader>/",
       function()
         Snacks.picker.grep()
       end,
       desc = "Grep string",
     },
     {
-      "<leader>b",
+      "<leader><leader>",
       function()
         Snacks.picker.buffers()
       end,
