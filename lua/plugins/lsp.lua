@@ -6,6 +6,7 @@ return {
       "https://codeberg.org/mfussenegger/nvim-jdtls",
       dependencies = { "mason-org/mason.nvim" },
     },
+    { "folke/snacks.nvim" },
   },
   config = function()
     -- Diagnostic Config
