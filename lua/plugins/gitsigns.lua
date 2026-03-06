@@ -11,4 +11,20 @@ return {
       change = { text = "~" },
     },
   },
+  keys = {
+    {
+      "]c",
+      function()
+        require("gitsigns").nav_hunk("next")
+      end,
+      desc = "Next Git change",
+    },
+    {
+      "[c",
+      function()
+        require("gitsigns").nav_hunk("prev")
+      end,
+      desc = "Previous Git change",
+    },
+  },
 }
