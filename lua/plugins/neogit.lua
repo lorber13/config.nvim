@@ -15,9 +15,6 @@ return {
     "folke/snacks.nvim", -- optional
   },
   cmd = "Neogit",
-  opts = {
-    graph_style = "unicode",
-  },
   keys = {
     {
       "<leader>g",
