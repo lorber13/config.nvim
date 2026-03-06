@@ -15,7 +15,16 @@ return {
     "folke/snacks.nvim", -- optional
   },
   cmd = "Neogit",
+  opts = {
+    graph_style = "unicode",
+  },
   keys = {
-    { "<leader>g", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+    {
+      "<leader>g",
+      function()
+        require("neogit").open({ kind = "vsplit" })
+      end,
+      desc = "Show Neogit UI",
+    },
   },
 }
